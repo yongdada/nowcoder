@@ -49,16 +49,16 @@ public class Code_02_GetMinStack {
 			this.stackMin = new Stack<Integer>();
 		}
 
-		public void push(int newNum) {
+		public void push(int x) {
 			if (this.stackMin.isEmpty()) {
-				this.stackMin.push(newNum);
-			} else if (newNum < this.getmin()) {
-				this.stackMin.push(newNum);
+				this.stackMin.push(x);
+			} else if (x < this.getMin()) {
+				this.stackMin.push(x);
 			} else {
 				int newMin = this.stackMin.peek();
 				this.stackMin.push(newMin);
 			}
-			this.stackData.push(newNum);
+			this.stackData.push(x);
 		}
 
 		public int pop() {
@@ -69,13 +69,63 @@ public class Code_02_GetMinStack {
 			return this.stackData.pop();
 		}
 
-		public int getmin() {
+		public int getMin() {
 			if (this.stackMin.isEmpty()) {
 				throw new RuntimeException("Your stack is empty.");
 			}
 			return this.stackMin.peek();
 		}
 	}
+	
+	class MinStack {
+
+	    /** initialize your data structure here. */
+	    private Stack<Integer> stackData;
+	    private Stack<Integer> stackMin;
+	    public MinStack() {
+	        this.stackData = new Stack<Integer>();
+	        this.stackMin = new Stack<Integer>();
+	    }
+	    
+	    public void push(int x) {
+	        if(stackData.isEmpty()){
+	            stackData.push(x);
+	            stackMin.push(x);
+	        } else if(stackMin.peek() > x){
+	        	stackData.push(x);
+	            stackMin.push(x);
+	        } else {
+	        	stackMin.push(stackMin.peek());
+	            stackData.push(x);
+	        }
+	    }
+	    
+	    public void pop() {
+	    	if(stackData.isEmpty())
+	    		throw new RuntimeException("此时栈为空，不能弹出！");
+	    	stackData.pop();
+            stackMin.pop();
+	    }
+	    
+	    public int top() {
+	    	return stackData.peek();
+	    }
+	    
+	    public int getMin() {
+	    	if(stackData.isEmpty())
+	    		throw new RuntimeException("此时栈为空，不能弹出！");
+	        return stackMin.peek();
+	    }
+	}
+
+	/**
+	 * Your MinStack object will be instantiated and called as such:
+	 * MinStack obj = new MinStack();
+	 * obj.push(x);
+	 * obj.pop();
+	 * int param_3 = obj.top();
+	 * int param_4 = obj.getMin();
+	 */
 
 	public static void main(String[] args) {
 		MyStack1 stack1 = new MyStack1();

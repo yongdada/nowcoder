@@ -2,11 +2,6 @@ package basic_class_01;
 
 import java.util.Arrays;
 
-/**
- * å †æ’åº
- * @author add
- *
- */
 public class Code_03_HeapSort {
 
 	public static void heapSort(int[] arr) {
@@ -24,6 +19,11 @@ public class Code_03_HeapSort {
 		}
 	}
 
+	/**
+	 * Éú³É´ó¸ù¶Ñ
+	 * @param arr
+	 * @param index
+	 */
 	public static void heapInsert(int[] arr, int index) {
 		while (arr[index] > arr[(index - 1) / 2]) {
 			swap(arr, index, (index - 1) / 2);
