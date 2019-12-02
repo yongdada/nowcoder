@@ -2,6 +2,11 @@ package basic_class_01;
 
 import java.util.Arrays;
 
+/**
+ * 桶排序
+ * @author add
+ *
+ */
 public class Code_06_BucketSort {
 
 	// only for 0~200 value
