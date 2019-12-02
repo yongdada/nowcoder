@@ -8,7 +8,7 @@ import java.util.Map;
 public class StringQuestion {
 
 	public static void main(String[] args) {
-		String s = "anana", t = "nagaram";
+		String s = "anana";
 		//System.out.println(longestPalindrome(s));
 		
 		StringQuestion sq = new StringQuestion();
