@@ -1,4 +1,4 @@
-package leetode;
+package leetcode;
 
 import java.util.HashSet;
 import java.util.Iterator;
