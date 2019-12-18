@@ -26,6 +26,28 @@ public class ArrayQuestion {
 	}
 
 	/**
+	 * 334. 递增的三元子序列
+	 * @param nums
+	 * @return
+	 */
+	public boolean increasingTriplet(int[] nums) {
+        int a = Integer.MAX_VALUE;
+        int b = Integer.MAX_VALUE;
+        
+        for(int i=0; i<nums.length; i++) {
+        	if(nums[i] < a)	{
+        		a = nums[i];
+        	} else if(nums[i] > a && nums[i] < b) {
+        		b = nums[i];
+        	} else if(nums[i] > b){
+        		return true;
+        	}
+        }
+        
+        return false;
+    }
+	
+	/**
 	 * 238. 除自身以外数组的乘积
 	 *  采用 左边乘积 × 右边乘积
 	 * @param nums
