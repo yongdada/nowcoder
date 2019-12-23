@@ -2,6 +2,11 @@ package class_04;
 
 import java.util.Stack;
 
+/**
+ * 二叉树的遍历
+ * @author Administrator
+ *
+ */
 public class Code_01_PreInPosTraversal {
 
 	public static class Node {
@@ -14,6 +19,10 @@ public class Code_01_PreInPosTraversal {
 		}
 	}
 
+	/**
+	 * 递归实现 先序遍历
+	 * @param head
+	 */
 	public static void preOrderRecur(Node head) {
 		if (head == null) {
 			return;
@@ -23,6 +32,10 @@ public class Code_01_PreInPosTraversal {
 		preOrderRecur(head.right);
 	}
 
+	/**
+	 * 中序遍历
+	 * @param head
+	 */
 	public static void inOrderRecur(Node head) {
 		if (head == null) {
 			return;
@@ -32,6 +45,10 @@ public class Code_01_PreInPosTraversal {
 		inOrderRecur(head.right);
 	}
 
+	/**
+	 * 后续遍历
+	 * @param head
+	 */
 	public static void posOrderRecur(Node head) {
 		if (head == null) {
 			return;
@@ -41,6 +58,7 @@ public class Code_01_PreInPosTraversal {
 		System.out.print(head.value + " ");
 	}
 
+	//=========================非递归实现========================
 	public static void preOrderUnRecur(Node head) {
 		System.out.print("pre-order: ");
 		if (head != null) {
@@ -49,6 +67,7 @@ public class Code_01_PreInPosTraversal {
 			while (!stack.isEmpty()) {
 				head = stack.pop();
 				System.out.print(head.value + " ");
+				//先压入右，在压入左节点， 则先弹出左，再弹出右
 				if (head.right != null) {
 					stack.push(head.right);
 				}
@@ -84,6 +103,7 @@ public class Code_01_PreInPosTraversal {
 			Stack<Node> s1 = new Stack<Node>();
 			Stack<Node> s2 = new Stack<Node>();
 			s1.push(head);
+			//对比先序遍历， 需要一个额外的栈，反转出栈顺序 为 打印顺序
 			while (!s1.isEmpty()) {
 				head = s1.pop();
 				s2.push(head);
@@ -136,7 +156,7 @@ public class Code_01_PreInPosTraversal {
 		head.right.right.right = new Node(11);
 
 		// recursive
-		System.out.println("==============recursive==============");
+		System.out.println("==============recursive递归实现==============");
 		System.out.print("pre-order: ");
 		preOrderRecur(head);
 		System.out.println();
@@ -148,7 +168,7 @@ public class Code_01_PreInPosTraversal {
 		System.out.println();
 
 		// unrecursive
-		System.out.println("============unrecursive=============");
+		System.out.println("============unrecursive非递归实现=============");
 		preOrderUnRecur(head);
 		inOrderUnRecur(head);
 		posOrderUnRecur1(head);
