@@ -1,5 +1,11 @@
 package class_04;
 
+/**
+ * 找二叉树的后续节点
+ * 在二叉树的中序遍历的序列中， node的下一个节点叫作node的后继节点
+ * @author Administrator
+ *
+ */
 public class Code_03_SuccessorNode {
 
 	public static class Node {

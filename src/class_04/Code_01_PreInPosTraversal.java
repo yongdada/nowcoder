@@ -1,9 +1,12 @@
 package class_04;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 /**
  * 二叉树的遍历
+ * 
  * @author Administrator
  *
  */
@@ -21,6 +24,7 @@ public class Code_01_PreInPosTraversal {
 
 	/**
 	 * 递归实现 先序遍历
+	 * 
 	 * @param head
 	 */
 	public static void preOrderRecur(Node head) {
@@ -34,6 +38,7 @@ public class Code_01_PreInPosTraversal {
 
 	/**
 	 * 中序遍历
+	 * 
 	 * @param head
 	 */
 	public static void inOrderRecur(Node head) {
@@ -47,6 +52,7 @@ public class Code_01_PreInPosTraversal {
 
 	/**
 	 * 后续遍历
+	 * 
 	 * @param head
 	 */
 	public static void posOrderRecur(Node head) {
@@ -58,16 +64,16 @@ public class Code_01_PreInPosTraversal {
 		System.out.print(head.value + " ");
 	}
 
-	//=========================非递归实现========================
+	// =========================非递归实现========================
 	public static void preOrderUnRecur(Node head) {
 		System.out.print("pre-order: ");
 		if (head != null) {
 			Stack<Node> stack = new Stack<Node>();
-			stack.add(head);
+			stack.push(head);
 			while (!stack.isEmpty()) {
 				head = stack.pop();
 				System.out.print(head.value + " ");
-				//先压入右，在压入左节点， 则先弹出左，再弹出右
+				// 先压入右，在压入左节点， 则先弹出左，再弹出右
 				if (head.right != null) {
 					stack.push(head.right);
 				}
@@ -103,7 +109,7 @@ public class Code_01_PreInPosTraversal {
 			Stack<Node> s1 = new Stack<Node>();
 			Stack<Node> s2 = new Stack<Node>();
 			s1.push(head);
-			//对比先序遍历， 需要一个额外的栈，反转出栈顺序 为 打印顺序
+			// 对比先序遍历， 需要一个额外的栈，反转出栈顺序 为 打印顺序
 			while (!s1.isEmpty()) {
 				head = s1.pop();
 				s2.push(head);
@@ -174,6 +180,110 @@ public class Code_01_PreInPosTraversal {
 		posOrderUnRecur1(head);
 		posOrderUnRecur2(head);
 
+	}
+
+	// ================================================================
+	/**
+	 * Definition for a binary tree node.
+	 */
+	public class TreeNode {
+		int val;
+		TreeNode left;
+		TreeNode right;
+
+		TreeNode(int x) {
+			val = x;
+		}
+	}
+
+	class Solution {
+		// ==============先序遍历====================
+		List<Integer> rst = new ArrayList<Integer>();
+
+		public List<Integer> preorderTraversal1(TreeNode root) {
+			preorder(root);
+			return rst;
+
+		}
+
+		private void preorder(TreeNode root) {
+			if (root == null) {
+				return;
+			}
+			rst.add(root.val);
+			preorder(root.left);
+			preorder(root.right);
+		}
+
+		// 非递归
+		public List<Integer> preorderTraversal2(TreeNode root) {
+			List<Integer> list = new ArrayList<Integer>();
+			if (root != null) {
+				Stack<TreeNode> stack = new Stack<TreeNode>();
+				stack.push(root);
+				while (!stack.isEmpty()) {
+					root = stack.pop();
+					list.add(root.val);
+					if (root.right != null) {
+						stack.push(root.right);
+					}
+					if (root.left != null) {
+						stack.push(root.left);
+					}
+				}
+			}
+			return list;
+		}
+		//==================中序遍历=========================
+		/**
+		 * 非递归实现
+		 * @param root
+		 * @return
+		 */
+	    public List<Integer> inorderTraversal(TreeNode root) {
+	    	List<Integer> list = new ArrayList<Integer>();
+			if (root != null) {
+				Stack<TreeNode> stack = new Stack<TreeNode>();
+				while (!stack.isEmpty() || root !=null ) {
+					if (root != null) {
+						stack.push(root);
+						root = root.left;
+					} else {
+						root = stack.pop();
+						list.add(root.val);
+						root = root.right;
+					}
+				}
+			}
+			return list;
+	    }
+		/**
+		 * 后续遍历，非递归
+		 * @param root
+		 * @return
+		 */
+	    public List<Integer> postorderTraversal(TreeNode root) {
+			List<Integer> list = new ArrayList<Integer>();
+			if (root != null) {
+				Stack<TreeNode> stack = new Stack<TreeNode>();
+				Stack<TreeNode> help = new Stack<TreeNode>();
+				stack.push(root);
+				while (!stack.isEmpty()) {
+					root = stack.pop();
+					help.push(root);
+					if (root.left != null) {
+						stack.push(root.left);
+					}
+					if (root.right != null) {
+						stack.push(root.right);
+					}
+				}
+				while(!help.isEmpty()) {
+					list.add(help.pop().val);
+				}
+			}
+			return list;
+	    }
 	}
 
 }
