@@ -1,5 +1,10 @@
 package class_03;
 
+/**
+ * 链表的荷兰国旗问题
+ * @author Administrator
+ *
+ */
 public class Code_12_SmallerEqualBigger {
 
 	public static class Node {

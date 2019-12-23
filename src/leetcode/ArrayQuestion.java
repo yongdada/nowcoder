@@ -26,6 +26,42 @@ public class ArrayQuestion {
 	}
 
 	/**
+	 * 1295. 统计位数为偶数的数字
+	 * @param nums
+	 * @return
+	 */
+	public int findNumbers(int[] nums) {
+        int res = 0;
+        for(int n :nums){
+        	String stringN = String.valueOf(n);
+            int len = stringN.length();
+            if(len%2 == 0) {
+            	res++;
+            }
+            
+        }
+        return res;
+    }
+	
+	/**
+	 * 867. 转置矩阵
+	 * @param A
+	 * @return
+	 */
+	public int[][] transpose(int[][] A) {
+		if(A == null || A.length == 0) return new int[0][0];
+		
+		int row = A.length;
+		int cloumn = A[0].length;
+		int[][] rst = new int[cloumn][row];
+		for(int i = 0; i < row; i++) {
+			for(int j = 0; j < cloumn; j++) {
+				rst[j][i] = A[i][j];
+			}
+		}
+		return rst;
+	}
+	/**
 	 * 334. 递增的三元子序列
 	 * @param nums
 	 * @return

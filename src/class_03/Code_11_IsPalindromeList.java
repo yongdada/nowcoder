@@ -2,6 +2,7 @@ package class_03;
 
 import java.util.Stack;
 
+
 /**
  * 判断一个链表是否为回文结构
  * @author add
@@ -201,6 +202,44 @@ public class Code_11_IsPalindromeList {
 		printLinkedList(head);
 		System.out.println("=========================");
 
+	}
+	
+	//=========================================================
+	public class ListNode {
+		int val;
+		ListNode next;
+	    ListNode(int x) { val = x; }
+	}
+	/**
+	 * 234. 回文链表
+	 * @param head
+	 * @return
+	 */
+	public boolean isPalindrome(ListNode head) {
+		if(head == null || head.next ==null) return true;
+		ListNode low = head;
+		ListNode heigh = head;
+		while(heigh != null && heigh.next != null) {
+			low = low.next;
+			heigh = heigh.next.next;
+		}
+		ListNode pre = null;
+		ListNode next = null;
+		while(low != null) {
+			next = low.next;
+			low.next = pre;
+			pre = low;
+			low = next;
+		}
+		while(head != null && pre != null) {
+			if(head.val != pre.val) {
+				return false;
+			} else {
+				head = head.next;
+				pre = pre.next;
+			}
+		}
+		return true;
 	}
 
 }

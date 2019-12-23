@@ -1,5 +1,17 @@
 package class_03;
 
+
+/**
+ * 	两个单链表相交的一系列问题
+ *	【题目】 在本题中，单链表可能有环，也可能无环。给定两个
+ *	单链表的头节点 head1和head2，这两个链表可能相交，也可能
+ *	不相交。请实现一个函数， 如果两个链表相交，请返回相交的
+ *	第一个节点；如果不相交，返回null 即可。 要求：如果链表1
+ *	的长度为N，链表2的长度为M，时间复杂度请达到 O(N+M)，额外
+ *	空间复杂度请达到O(1)。
+ * @author Administrator
+ *
+ */
 public class Code_14_FindFirstIntersectNode {
 
 	public static class Node {
@@ -160,5 +172,58 @@ public class Code_14_FindFirstIntersectNode {
 		System.out.println(getIntersectNode(head1, head2).value);
 
 	}
-
+	
+	//=======================================================
+	public class ListNode {
+		int val;
+		ListNode next;
+	    ListNode(int x) { val = x; }
+	}
+	/**
+	 * 141. 环形链表
+	 * @param head
+	 * @return
+	 */
+	public boolean hasCycle(ListNode head) {
+        if (head == null || head.next == null || head.next.next == null) {
+			return false;
+		}
+		ListNode p1 = head.next.next;	//快指针
+		ListNode p2 = head.next;
+		
+		while(p1 != p2 && p1 !=null && p1.next != null) {
+			p1 = p1.next.next;
+			p2 = p2.next;
+		}
+		if(p1 == null || p1.next == null) {
+			return false;
+		}
+        return true;
+	}
+	/**
+	 * 142. 环形链表 II
+	 * @param head
+	 * @return
+	 */
+	public ListNode detectCycle(ListNode head) {
+		if (head == null || head.next == null || head.next.next == null) {
+			return null;
+		}
+		ListNode p1 = head.next.next;	//快指针
+		ListNode p2 = head.next;
+		
+		while(p1 != p2 && p1 !=null && p1.next != null) {
+			p1 = p1.next.next;
+			p2 = p2.next;
+		}
+		if(p1 == null || p1.next == null) {
+			return null;
+		}
+		p1 = head;
+		while(p1 != p2) {
+			p1 = p1.next;
+			p2 = p2.next;
+		}
+		return p1;
+	}
 }
