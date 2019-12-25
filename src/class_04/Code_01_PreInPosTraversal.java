@@ -364,6 +364,34 @@ public class Code_01_PreInPosTraversal {
 	        }
 	    	return lists;
 	    }
+	    //========================搜索二叉树===================
+	    /**
+	     * 98. 验证二叉搜索树
+	     * @param root
+	     * @return
+	     */
+	    public boolean isValidBST(TreeNode root) {
+	    	long pre = Long.MIN_VALUE;
+			if (root != null) {
+				Stack<TreeNode> stack = new Stack<TreeNode>();
+				while (!stack.isEmpty() || root !=null ) {
+					if (root != null) {
+						stack.push(root);
+						root = root.left;
+					} else {
+						root = stack.pop();
+						if(root.val <= pre) {
+							return false;
+						} else {
+							pre = root.val;
+						}
+						root = root.right;
+					}
+				}
+				return true;
+			}
+			return true;
+	    }
 	}
 
 }

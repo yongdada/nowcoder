@@ -3,6 +3,11 @@ package class_04;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * 判断完全二叉树和平衡二叉树
+ * @author Administrator
+ *
+ */
 public class Code_07_IsBSTAndCBT {
 
 	public static class Node {
@@ -15,6 +20,11 @@ public class Code_07_IsBSTAndCBT {
 		}
 	}
 
+	/**
+	 * 平衡二叉树
+	 * @param head
+	 * @return
+	 */
 	public static boolean isBST(Node head) {
 		if (head == null) {
 			return true;
@@ -46,6 +56,11 @@ public class Code_07_IsBSTAndCBT {
 		return res;
 	}
 
+	/**
+	 * 判断完全二叉树
+	 * @param head
+	 * @return
+	 */
 	public static boolean isCBT(Node head) {
 		if (head == null) {
 			return true;
@@ -116,5 +131,46 @@ public class Code_07_IsBSTAndCBT {
 		System.out.println(isBST(head));
 		System.out.println(isCBT(head));
 
+	}
+	//==========================================================
+	public class TreeNode {
+		int val;
+		TreeNode left;
+		TreeNode right;
+
+		TreeNode(int x) {
+			val = x;
+		}
+	}
+	/**
+	 * 958. 二叉树的完全性检验
+	 * @param root
+	 * @return
+	 */
+	public boolean isCompleteTree(TreeNode root) {
+		if(root == null || (root.left == null && root.right == null)) {
+			return true;
+		}
+		Queue<TreeNode> queue = new LinkedList<TreeNode>();
+		queue.offer(root);
+		boolean leaf = false;
+		while(!queue.isEmpty()) {
+			root = queue.poll();
+			TreeNode left = root.left;
+			TreeNode right = root.right;
+			
+			if((left == null && right != null) || (leaf && left != null)) {
+				return false;
+			}
+			if(left != null) {
+				queue.offer(left);
+			}
+			if(right != null) {
+				queue.offer(right);
+			} else {
+				leaf = true;
+			}
+		}
+		return true;
 	}
 }

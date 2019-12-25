@@ -1,5 +1,10 @@
 package class_04;
 
+/**
+ * 完全二叉树的节点数
+ * @author Administrator
+ *
+ */
 public class Code_08_CompleteTreeNodeNumber {
 
 	public static class Node {
@@ -12,6 +17,11 @@ public class Code_08_CompleteTreeNodeNumber {
 		}
 	}
 
+	/**
+	 * 222. 完全二叉树的节点个数
+	 * @param head
+	 * @return
+	 */
 	public static int nodeNum(Node head) {
 		if (head == null) {
 			return 0;
@@ -19,14 +29,21 @@ public class Code_08_CompleteTreeNodeNumber {
 		return bs(head, 1, mostLeftLevel(head, 1));
 	}
 
-	public static int bs(Node node, int l, int h) {
-		if (l == h) {
+	/**
+	 * 
+	 * @param node 当前节点
+	 * @param level 当前节点所在树的底几层
+	 * @param heigh	二叉树的总高度
+	 * @return	以当前节点为根的二叉树的节点个数
+	 */
+	public static int bs(Node node, int level, int heigh) {
+		if (level == heigh) {
 			return 1;
 		}
-		if (mostLeftLevel(node.right, l + 1) == h) {
-			return (1 << (h - l)) + bs(node.right, l + 1, h);
+		if (mostLeftLevel(node.right, level + 1) == heigh) {
+			return (1 << (heigh - level)) + bs(node.right, level + 1, heigh);
 		} else {
-			return (1 << (h - l - 1)) + bs(node.left, l + 1, h);
+			return (1 << (heigh - level - 1)) + bs(node.left, level + 1, heigh);
 		}
 	}
 
