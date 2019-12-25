@@ -1,6 +1,7 @@
 package class_04;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -283,6 +284,85 @@ public class Code_01_PreInPosTraversal {
 				}
 			}
 			return list;
+	    }
+	    
+	    /**
+	     * 先序遍历：莫里斯遍历
+	     * 算法不会使用额外空间，只需要保存最终的输出结果。如果实时输出结果，那么空间复杂度是 O(1)。
+	     * @param root
+	     * @return
+	     */
+	    public List<Integer> preorderTraversal(TreeNode root) {
+		    LinkedList<Integer> output = new LinkedList<>();
+
+		    TreeNode node = root;
+		    while (node != null) {
+		      if (node.left == null) {
+		        output.add(node.val);
+		        node = node.right;
+		      }
+		      else {
+		        TreeNode predecessor = node.left;
+		        while ((predecessor.right != null) && (predecessor.right != node)) {
+		          predecessor = predecessor.right;
+		        }
+
+		        if (predecessor.right == null) {
+		          output.add(node.val);
+		          predecessor.right = node;
+		          node = node.left;
+		        }
+		        else{
+		          predecessor.right = null;
+		          node = node.right;
+		        }
+		      }
+		    }
+		    return output;
+		  }
+	    //===========================层次遍历==================================
+	    /**
+	     * 102. 二叉树的层次遍历
+	     * 二叉树的层次遍历，递归实现
+	     * @param root
+	     * @return
+	     */
+	    public List<List<Integer>> levelOrder(TreeNode root) {
+	    	List<List<Integer>> lists = new ArrayList<List<Integer>>();
+	    	if(root == null)	return lists;
+	    	levelOrderHelp(root, 0, lists);
+	    	return lists;
+	    }
+	    private void levelOrderHelp(TreeNode root, int level, List<List<Integer>> lists) {
+	    	
+	    	if(root != null) {
+	    		//构造层
+		    	if(lists.size() == level) {
+		    		lists.add(new ArrayList<Integer>());
+		    	}
+	    		lists.get(level).add(root.val);
+	    		
+	    		levelOrderHelp(root.left, level+1, lists);
+	    		levelOrderHelp(root.right, level+1, lists);
+	    	}
+	    }
+	    
+	    /**
+	     * 107. 二叉树的层次遍历 II
+	     * @param root
+	     * @return
+	     */
+	    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+	    	List<List<Integer>> lists = new ArrayList<List<Integer>>();
+	    	if(root == null)	return lists;
+	    	levelOrderHelp(root, 0, lists);
+	    	//同102题，下面代码将lists中值顺序反转
+	    	for (int i = 0, j = lists.size() - 1; i < j; i++, j--) {
+	            List<Integer> temp = lists.get(i);
+	            lists.set(i, lists.get(j));
+	            lists.set(j, temp);
+	        }
+	    	return lists;
 	    }
 	}
 
