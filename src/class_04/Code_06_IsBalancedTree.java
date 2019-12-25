@@ -1,5 +1,11 @@
 package class_04;
 
+
+/**
+ * 平衡二叉树
+ * @author Administrator
+ *
+ */
 public class Code_06_IsBalancedTree {
 
 	public static class Node {
@@ -50,4 +56,39 @@ public class Code_06_IsBalancedTree {
 
 	}
 
+	//========================================================
+	public class TreeNode {
+		int val;
+		TreeNode left;
+		TreeNode right;
+
+		TreeNode(int x) {
+			val = x;
+		}
+	}
+	public boolean isBalanced(TreeNode root) {
+		
+		if (getHeigh(root) == -1) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * @param root
+	 * @return -1代表非平衡二叉树， 大于0的整型代表以root为根的树的高度
+	 */
+	private int getHeigh(TreeNode root) {
+		// TODO Auto-generated method stub
+		if (root == null) {
+			return 0;
+		}
+		int leftH = getHeigh(root.left);
+		if(leftH == -1)	return -1;
+		int rightH = getHeigh(root.right);
+		if (rightH == -1) return -1;
+		if (Math.abs(rightH - leftH) > 1)	return -1;
+		
+		return Math.max(leftH, rightH)+1;
+	}
 }

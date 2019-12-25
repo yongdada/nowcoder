@@ -3,6 +3,11 @@ package class_04;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * 二叉树的序列化与反序列化
+ * @author Administrator
+ *
+ */
 public class Code_04_SerializeAndReconstructTree {
 
 	public static class Node {
