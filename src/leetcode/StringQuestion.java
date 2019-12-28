@@ -17,6 +17,55 @@ public class StringQuestion {
 	}
 
 	/**
+	 * 168. Excel表列名称
+	 * 给定一个正整数，返回它在 Excel 表中相对应的列名称。
+ 	 * 例如，
+     * 1 -> A
+     * 2 -> B
+     * 3 -> C
+     * ...
+     * 26 -> Z
+     * 27 -> AA
+     * 28 -> AB 
+ 
+	 * @param n
+	 * @return
+	 */
+    public String convertToTitle(int n) {
+    	StringBuilder string = new StringBuilder();
+    	while(n > 0) {    		
+    		n--;
+    		int a = n % 26;
+    		string.insert(0, (char)(a + 'A'));
+    		n /= 26;
+    	}
+    	return string.toString();
+//        StringBuilder stringBuilder = new StringBuilder();
+//        while (n != 0) {
+//            n --;//这里稍作处理，因为它是从1开始
+//            stringBuilder.append((char)(n % 26 + 'A'));
+//            n /= 26;
+//        }
+//        return stringBuilder.reverse().toString();
+    }
+    
+	/**
+	 * 171. Excel表列序号
+	 * 
+	 * @param s
+	 * @return
+	 */
+	public int titleToNumber(String s) {
+		int res = 0;
+		int len = s.length();
+		for(int i=0; i<len; i++) {
+			int val = s.charAt(i) - 'A' + 1;
+			res = res*26 + val;
+		}
+		
+		return res;
+	}
+	/**
 	 * 分割回文串
 	 * @param s
 	 * @return
