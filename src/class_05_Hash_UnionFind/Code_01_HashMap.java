@@ -1,4 +1,4 @@
-package class_05;
+package class_05_Hash_UnionFind;
 
 import java.util.ArrayList;
 import java.util.HashMap;
