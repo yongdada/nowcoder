@@ -1,4 +1,4 @@
-package class_07;
+package class_07_trie_best;
 
 /**
  * 前缀树
