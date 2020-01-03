@@ -321,6 +321,18 @@ public class Code_01_PreInPosTraversal {
 		    return output;
 		  }
 	    //===========================层次遍历==================================
+	    public int deepestLeavesSum(TreeNode root) {
+	    	List<List<Integer>> lists = new ArrayList<List<Integer>>();
+	    	if(root == null)	return 0;
+	    	levelOrderHelp(root, 0, lists);
+	    	List<Integer> list = lists.get(lists.size()-1);
+	    	int res = 0;
+	    	for(int i:list) {
+	    		res += i;
+	    	}
+	    	return res;
+	    }
+
 	    /**
 	     * 102. 二叉树的层次遍历
 	     * 二叉树的层次遍历，递归实现
