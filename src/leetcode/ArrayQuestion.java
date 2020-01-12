@@ -26,6 +26,50 @@ public class ArrayQuestion {
 //		System.out.println(containsDuplicate);
 
 	}
+
+	/**
+	 * 5309. 连通网络的操作次数
+	 * 
+	 * <b>err</b>
+	 * 
+	 * @param n
+	 * @param connections
+	 * @return
+	 */
+	public int makeConnected(int n, int[][] connections) {
+		// TODO: 此解错误，待完成
+		int count = connections.length;
+		if(count+1 <n) {
+			return -1;
+		}
+		HashSet<Integer> hash = new HashSet<Integer>();
+		for(int i = 0; i < count; i++) {
+			for(int j = 0; j < 2; j++) {
+				//connections[i][j]
+				hash.add(connections[i][j]);
+			}
+		}
+		int res = 0;
+		for(int i=0; i<n; i++) {
+			if(! hash.contains((Integer)i)) {
+				res++;
+			}
+		}
+		return res;
+	}
+	public int[] xorQueries(int[] arr, int[][] queries) {
+		int[] res = new int[queries.length];
+		for(int i=0; i<queries.length; i++) {
+			if(queries[i][0] == queries[i][1]) {
+				res[i] = arr[queries[i][0]];
+			} else {
+				for(int j=queries[i][0]; j<=queries[i][1]; j++) {
+					res[i] ^= arr[j];
+				}
+			}
+		}
+		return res;
+	}
 	
 	//===================================================
 	/**
