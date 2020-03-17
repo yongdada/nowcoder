@@ -16,10 +16,26 @@ public class StringQuestion {
 //		System.out.println(partition.toString());
 		s = "10#11#12";
 //		System.out.println(freqAlphabets(s));
-		
-		System.out.println(minFlips(2, 6, 5));
+		StringQuestion sq = new StringQuestion();
+		System.out.println(sq.q());
 	}
-
+	
+	
+	public String q(){
+		String q = "class Solution {\n" + 
+				"	public String q(){\n" + 
+				"		String q = \"class Solution {\\n\" + \n" + 
+				"				\"	public String q(){\\n\" + \n" + 
+				"				\"		String q = \\\"\\\";\\n\" + \n" + 
+				"				\"		return q;\\n\" + \n" + 
+				"				\"	}\\n\" + \n" + 
+				"				\"}\";\n" + 
+				"		return q;\n" + 
+				"	}\n" + 
+				"}";
+		return q;
+	}
+	
 	/**
 	 * 5308. 或运算的最小翻转次数
 	 * @param a

@@ -1,5 +1,10 @@
 package basic_class_02;
 
+/**
+ * 子树包含问题
+ * @author Administrator
+ *
+ */
 public class Code_03_KMP_T1SubtreeEqualsT2 {
 
 	public static class Node {

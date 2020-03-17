@@ -2,7 +2,18 @@ package nowcoder;
 
 import java.io.*;
 public class Main{
-    public static void main(String[] arges) throws IOException{
+	
+	
+	
+	
+//	final static int i;
+	public static void main(String[] args) {
+		int m,n;
+		for (m = 0, n = -1; n != 0; m++, n++) {
+			n++;
+		}
+	}
+    public static void main2(String[] arges) throws IOException{
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         String s = "";
         while ((s=bf.readLine())!=null) {
@@ -17,7 +28,12 @@ public class Main{
             System.out.println(mergeSort(arr));
         }
     }
-    
+    public static int ysf(int n, int m){    //此题目中，n=41, m=3
+	    if(n == 1){
+	        return n;
+	    }
+	    return (ysf(n-1,m) + m - 1)% n + 1;
+	}
     public static long mergeSort(int[] arr){
         if(arr == null || arr.length <= 1){
             return 0;

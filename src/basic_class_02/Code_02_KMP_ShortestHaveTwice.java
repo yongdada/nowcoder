@@ -1,5 +1,9 @@
 package basic_class_02;
-
+/**
+ * 在字符串后面添加字符 使之成为两部分的叠加 切要求生成后的string长度最短
+ * @author Administrator
+ *
+ */
 public class Code_02_KMP_ShortestHaveTwice {
 
 	public static String answer(String str) {
