@@ -8,13 +8,13 @@ import java.util.Map;
 public class StringQuestion {
 
 	public static void main(String[] args) {
-		String s = "anana";
+//		String s = "anana";
 		//System.out.println(longestPalindrome(s));
 		
 //		StringQuestion sq = new StringQuestion();
 //		List<List<String>> partition = sq.partition(s);
 //		System.out.println(partition.toString());
-		s = "10#11#12";
+//		s = "10#11#12";
 //		System.out.println(freqAlphabets(s));
 		StringQuestion sq = new StringQuestion();
 		System.out.println(sq.q());
